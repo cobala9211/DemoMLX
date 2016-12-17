@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/darker_gray"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/tvIdOrder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tool:text="orderId : 1ds" />
+
+    <TextView
+        android:id="@+id/tvCustomer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvIdOrder"
+        tool:text="customer : dut" />
+
+    <TextView
+        android:id="@+id/tvEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvCustomer"
+        tool:text="email : abc@gmail.com" />
+</RelativeLayout>
