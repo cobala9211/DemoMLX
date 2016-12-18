@@ -24,7 +24,7 @@ import javax.xml.parsers.SAXParserFactory;
 public class DownloadXML extends AsyncTask<String, Void, Void> {
     private SaxActivity mContext;
     private ProgressDialog mDialog;
-    private XmlHandler handler;
+    private XmlHandlerSax handler;
 
     public DownloadXML(SaxActivity context) {
         this.mContext = context;
@@ -51,7 +51,7 @@ public class DownloadXML extends AsyncTask<String, Void, Void> {
             XMLReader reader = parser.getXMLReader();
 
             //create object data xml
-            handler = new XmlHandler();
+            handler = new XmlHandlerSax();
             reader.setContentHandler(handler);
             InputSource input = new InputSource(urlXml);
             reader.parse(input);

@@ -19,7 +19,7 @@ import java.util.List;
 public class SaxActivity extends AppCompatActivity {
     private ItemSax mItemSax;
     private ItemSaxObject mObject;
-    private static final String TAG = "TAG12";
+    private static final String TAG = "SaxActivity";
     private List<ItemSaxDetail> mListItemDetails = new ArrayList<>();
     private RecyclerView mRecyclerSax;
     private SaxAdapter mAdapter;
