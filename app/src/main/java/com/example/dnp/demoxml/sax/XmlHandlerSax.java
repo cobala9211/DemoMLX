@@ -18,7 +18,7 @@ import java.util.List;
  * Created by DNP on 12/17/2016.
  */
 
-public class XmlHandler extends DefaultHandler {
+public class XmlHandlerSax extends DefaultHandler {
     private boolean mIsCurrentElement = false;
     //item root
     private static final String ITEM = "item";
@@ -59,6 +59,7 @@ public class XmlHandler extends DefaultHandler {
         super.endElement(uri, localName, qName);
         mIsCurrentElement = false;
         if (!mIsItems) {
+            //get data from header
             if (qName.equalsIgnoreCase(TITLE)) {
                 mItemSax.setTitle(mCurrentValue.trim());
             } else if (qName.equalsIgnoreCase(LINK)) {
@@ -67,6 +68,7 @@ public class XmlHandler extends DefaultHandler {
                 mItemSax.setPupDate(mCurrentValue.trim());
             }
         } else {
+            //get data from body
             if (qName.equals(TITLES)) {
                 mItemSaxDetail.setTitles(mCurrentValue.trim());
             } else if (qName.equals(LINKS)) {
@@ -79,6 +81,7 @@ public class XmlHandler extends DefaultHandler {
                 mItemObject = new ItemSaxObject();
                 Log.d("TAG11", "endElement: " + mCurrentValue.trim());
                 try {
+                    //get data html inside item
                     XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
                     XmlPullParser xpp = factory.newPullParser();
                     xpp.setInput(new StringReader(mCurrentValue.trim()));
@@ -87,12 +90,14 @@ public class XmlHandler extends DefaultHandler {
                         if (eventType == XmlPullParser.START_DOCUMENT) {
                             Log.d("TAG11", "Start document");
                         } else if (eventType == XmlPullParser.START_TAG) {
+                            //get tag html <a/>
                             if (xpp.getName().equals("a")) {
                                 mItemObject.setLink(xpp.getAttributeValue(null, "href"));
                                 mItemObject.setTitle(xpp.getAttributeValue(null, "title"));
                                 Log.d("TAG11", "Start tag: " + xpp.getAttributeValue(null, "href"));
                                 Log.d("TAG11", "Start title " + xpp.getAttributeValue(null, "title"));
                             } else if (xpp.getName().equals("img")) {
+                                //get tag html <img/>
                                 mItemObject.setImg(xpp.getAttributeValue(null, "img"));
                                 Log.d("TAG11", "Start src " + xpp.getAttributeValue(null, "src"));
                                 Log.d("TAG11", "Start width " + xpp.getAttributeValue(null, "width"));
@@ -100,6 +105,7 @@ public class XmlHandler extends DefaultHandler {
                                 Log.d("TAG11", "Start alt " + xpp.getAttributeValue(null, "alt"));
                             }
                         } else if (eventType == XmlPullParser.TEXT) {
+                            //get text string <span>test</span>
                             mItemObject.setDescription(xpp.getText());
                             Log.d("TAG11", "Text: " + xpp.getText());
                         }
