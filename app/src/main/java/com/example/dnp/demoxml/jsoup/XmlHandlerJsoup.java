@@ -16,11 +16,11 @@ import java.io.IOException;
  * Created by DNP on 12/18/2016.
  */
 
-public class XmlHandlerJSoup extends AsyncTask<String, Void, Void> {
+public class XmlHandlerJsoup extends AsyncTask<String, Void, Void> {
     private Context mContext;
     private ProgressDialog mDialog;
 
-    public XmlHandlerJSoup(Context context) {
+    public XmlHandlerJsoup(Context context) {
         this.mContext = context;
     }
 
