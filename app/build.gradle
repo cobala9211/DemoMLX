@@ -27,4 +27,10 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.0.1'
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:recyclerview-v7:25.0.1'
+
+    //config jsoup
+    compile 'org.jsoup:jsoup:1.9.2'
+    //config retrofit
+    compile 'com.squareup.retrofit:retrofit:2.0.0-beta2'
+
 }
